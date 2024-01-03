@@ -6,12 +6,12 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign_in</title>
-    <link rel="stylesheet" href="static/output.css">
+    <link rel="stylesheet" href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css">
 </head>
 <!--bg-blue-400, hover:bg-blue-500-->
 <body>
-<div class="flex justify-center items-center h-screen bg-blue-400">
-    <div class="w-96 p-6 shadow-lg bg-white rounded-md">
+<div class="flex justify-center items-center h-screen bg-blue-500">
+    <div class="w-2/5 p-6 shadow-lg bg-white rounded-lg">
         <h1 class="text-3xl block text-center font-semibold">Login</h1>
         <form method="post">
             {%  csrf_token %}
@@ -28,12 +28,12 @@
             </div>
             <div>
                 <div class="mt-5">
-                    <button class=" bg-blue-400 text-blue-50 py-1 w-full rounded-md hover:bg-blue-500 font-semibold"
+                    <button class=" bg-blue-500 text-white py-1 w-full rounded-md hover:bg-blue-600 font-semibold"
                             id="sign_in_btn">Login
                     </button>
                 </div>
                 <div>
-                    <a href="#" class="text-blue-600 font-semibold" id="sign_up_page_btn">Not register? </a>
+                    <a href="#" class="text-blue-500 font-semibold" id="sign_up_page_btn">Not register? </a>
                 </div>
             </div>
         </form>
