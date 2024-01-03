@@ -27,3 +27,9 @@ const sign_up_page_btn = document.getElementById('exit_btn');
 sign_up_page_btn.addEventListener('click', () => {
     window.location.href = 'sign_in.html';
 });
+
+const sign_up_page_btn = document.getElementById('snippets_btn');
+
+sign_up_page_btn.addEventListener('click', () => {
+    window.location.href = 'home_page.html';
+});
