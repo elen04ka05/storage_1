@@ -1,29 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 {% load static %}
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Главная</title>
   <link rel="stylesheet" href="static/output.css" />
 </head>
+
 <body>
   <header class="p-4">
     <div class="flex items-center justify-between">
       <h1 class="text-3xl font-bold">Storage</h1>
       <nav>
-        <a href="#" class="hover:underline">Profile</a>
+        <a href="#" class="hover:underline" id="profile_btn">Profile</a>
       </nav>
     </div>
   </header>
   <main>
     <div class="p-4 flex">
-      <input
-        type="text"
-        class="bg-slate-100 p-2.5 rounded-full pl-4 grow"
-        placeholder="Search"
-      >
-      <button class="flex-none p-2.5 px-4 w-20 bg-blue-400 rounded-full ml-4 hover:bg-blue-500 active:bg-blue-400 text-white">
+      <input type="text" class="bg-slate-100 p-2.5 rounded-full pl-4 grow" placeholder="Search">
+      <button
+        class="flex-none p-2.5 px-4 w-20 bg-blue-400 rounded-full ml-4 hover:bg-blue-500 active:bg-blue-400 text-white">
         +
       </button>
     </div>
@@ -40,7 +39,8 @@
     </div>
     <div class="flex p-4 pt-0 gap-4 flex-wrap" id="cards-container"></div>
   </main>
-
   <script src="{% static 'JS/home_page.js' %}"></script>
+<script type="module" src="{% static 'JS/home_profile.js' %}"></script>
 </body>
+
 </html>
