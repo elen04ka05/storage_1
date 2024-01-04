@@ -177,3 +177,5 @@ exampleCards.forEach(card => {
   const cardElement = createCardElement(card.code, card.title, card.date)
   cardsContainer.append(cardElement)
 })
+
+

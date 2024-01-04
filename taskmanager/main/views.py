@@ -48,5 +48,27 @@ def sign_up(request):
     return render(request, 'main/sign_up.html', context)
 
 
+def sign_in_email(request):
+    if request.method == 'POST':
+        form = Sign_in_Form(request.POST)
+        if form.is_valid():
+            email = Sign.objects.filter(email=form.cleaned_data['email'])
+            if email:
+                return redirect('home_page.html')
+            else:
+                error = 'Пользователя нет'
+        else:
+            error = 'Введенные данные неверны'
+    form = Sign_in_Form()
+    context = {
+        'form': form
+    }
+    return render(request, 'main/sign_in_email.html', context)
+
+
 def home_page(request):
     return render(request, 'main/home_page.html')
+
+
+def profile(request):
+    return render(request, 'main/profile.html')
