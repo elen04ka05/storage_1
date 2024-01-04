@@ -177,3 +177,9 @@ exampleCards.forEach(card => {
   const cardElement = createCardElement(card.code, card.title, card.date)
   cardsContainer.append(cardElement)
 })
+
+const sign_up_page_btn = document.getElementById('profile_btn');
+
+sign_up_page_btn.addEventListener('click', () => {
+    window.location.href = 'profile.html';
+});
