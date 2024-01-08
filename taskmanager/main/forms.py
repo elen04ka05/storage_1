@@ -1,4 +1,4 @@
-from .models import Sign
+from .models import Sign, Snippet
 from django.forms import ModelForm, TextInput
 
 
@@ -40,3 +40,17 @@ class Sign_in_Form(ModelForm):
                 'placeholder': 'Enter password'
             }),
         }
+
+class Snippet_Form(ModelForm):
+    model = Snippet
+    fields = ["header", "code_container"]
+    widgets = {
+        "header": TextInput(attrs={
+            'class': 'border w-full text-base px-2 py-1 focus:outline-none focus:ring-0 focus:border-gray-600',
+            'placeholder': 'Name your project'
+        }),
+        "code_container": TextInput(attrs={
+            'class': 'border w-full text-base px-2 py-1 focus:outline-none focus:ring-0 focus:border-gray-600',
+            'placeholder': 'Write your project'
+        }),
+    }

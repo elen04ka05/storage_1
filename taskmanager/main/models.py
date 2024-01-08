@@ -1,6 +1,5 @@
 from django.db import models
 
-
 class Task(models.Model):
     title = models.CharField('Название', max_length=50)
     task = models.TextField('Описание')
@@ -25,3 +24,11 @@ class Sign(models.Model):
     class Meta:
         verbose_name = 'Данные пользователя'
         verbose_name_plural = 'Данные пользователя'
+
+class Snippet(models.Model):
+    header = models.CharField('Название проекта', max_length=50)
+    code_container = models.CharField('Поле ввода', max_length=50)
+    tag_container = models.CharField('Тэги проекта', max_length=50)
+
+    def __str__(self):
+        return self.header

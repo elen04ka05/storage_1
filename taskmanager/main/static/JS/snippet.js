@@ -13,8 +13,8 @@ const getCode = () => {
 }
 
 returnButton.addEventListener('click', () => {
-    window.location.href = '/home_page'
-})
+    window.location.href = 'home_page.html';
+});
 
 copyButton.addEventListener('click', async () => {
     const code = getCode()
