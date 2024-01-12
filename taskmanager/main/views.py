@@ -49,3 +49,6 @@ def home(request):
 
 def snippet(request, id):
     return render(request, 'main/snippet.html')
+
+def history(request, id):
+    return render(request, 'main/history.html')
