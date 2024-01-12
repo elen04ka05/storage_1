@@ -12,11 +12,11 @@ sign_up_page_btn.addEventListener('click', () => {
 const sign_up_page_btn = document.getElementById('sign_in_email_btn');
 
 sign_up_page_btn.addEventListener('click', () => {
-    window.location.href = 'home_page.html';
+    window.location.href = 'home.html';
 });
 
 const sign_up_page_btn = document.getElementById('sign_in_btn');
 
 sign_up_page_btn.addEventListener('click', () => {
-    window.location.href = 'home_page.html';
+    window.location.href = 'home.html';
 });

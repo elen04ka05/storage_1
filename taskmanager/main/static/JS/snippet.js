@@ -9,11 +9,11 @@ const debugButton = document.getElementById('debug-button')
 
 const getCode = () => {
     const content = codeContainer.textContent
-    return content.split('\n').map(line => line.trim()).join('\n').trim()  
+    return content.split('\n').map(line => line.trim()).join('\n').trim()
 }
 
 returnButton.addEventListener('click', () => {
-    window.location.href = '/home_page'
+    window.location.href = '/home'
 })
 
 copyButton.addEventListener('click', async () => {

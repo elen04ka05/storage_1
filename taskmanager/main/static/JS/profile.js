@@ -31,5 +31,5 @@ sign_up_page_btn.addEventListener('click', () => {
 const sign_up_page_btn = document.getElementById('snippets_btn');
 
 sign_up_page_btn.addEventListener('click', () => {
-    window.location.href = 'home_page.html';
+    window.location.href = 'home.html';
 });
