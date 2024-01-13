@@ -13,7 +13,7 @@ const getCode = () => {
 }
 
 returnButton.addEventListener('click', () => {
-    window.location.href = '/home_page'
+    window.location.href = 'home_page.html'
 })
 
 copyButton.addEventListener('click', async () => {
@@ -67,7 +67,7 @@ deleteButton.addEventListener('click', () => {
 })
 
 historyButton.addEventListener('click', () => {
-
+    window.location.href = 'history.html'
 })
 
 debugButton.addEventListener('click', () => {

@@ -7,5 +7,5 @@ urlpatterns = [
     # path('sign_in/', TemplateView.as_view(template_name='main/sign_in.html'), views.sign_in),
     path('sign_in', views.sign_in),
     path('sign_up', views.sign_up),
-    path('home_page', views.home_page),
+    path('home_page.html', views.home_page),
 ]
