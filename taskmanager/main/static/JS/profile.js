@@ -22,15 +22,9 @@ changePicButton.addEventListener('click', () => {
 
 document.addEventListener('DOMContentLoaded', setUsernameFromURL);
 
-<<<<<<< HEAD
 const sign_up_page_btn = document.getElementById('exit_btn');
 
 sign_up_page_btn.addEventListener('click', () => {
-=======
-const sign_in_page_btn = document.getElementById('exit_btn');
-
-sign_in_page_btn.addEventListener('click', () => {
->>>>>>> origin/master_1
     window.location.href = 'sign_in.html';
 });
 
@@ -38,8 +32,4 @@ const sign_up_page_btn = document.getElementById('snippets_btn');
 
 sign_up_page_btn.addEventListener('click', () => {
     window.location.href = 'home_page.html';
-<<<<<<< HEAD
 });
-=======
-});
->>>>>>> origin/master_1

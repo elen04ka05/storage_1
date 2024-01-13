@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
 
 from .models import Task, Sign
-from .forms import EmailForm, Sign_in_Form, Snippet_Form
+from .forms import EmailForm, Sign_in_Form
 
 
 def welcome(request):
@@ -27,13 +27,6 @@ def sign_in(request):
     }
     return render(request, 'main/sign_in.html', context)
 
-def snippet(request):
-    if request.method == 'POST':
-        form = Snippet_Form(request.post)
-        if form.is_valid():
-            form.save()
-    return render(request, 'main/snippet.html')
-
 
 def sign_up(request):
     if request.method == 'POST':
@@ -55,28 +48,5 @@ def sign_up(request):
     return render(request, 'main/sign_up.html', context)
 
 
-def sign_in_email(request):
-    if request.method == 'POST':
-        form = Sign_in_Form(request.POST)
-        if form.is_valid():
-            email = Sign.objects.filter(email=form.cleaned_data['email'])
-            if email:
-                return redirect('home_page.html')
-            else:
-                error = 'Пользователя нет'
-        else:
-            error = 'Введенные данные неверны'
-    form = Sign_in_Form()
-    context = {
-        'form': form
-    }
-    return render(request, 'main/sign_in_email.html', context)
-
-
 def home_page(request):
-   # tasks = Task.objects.all()
     return render(request, 'main/home_page.html')
-
-
-def profile(request):
-    return render(request, 'main/profile.html')
