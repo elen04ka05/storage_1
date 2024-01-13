@@ -12,7 +12,9 @@
     <div class="main grid place-items-center h-screen">
         <div class="card bg-white flex flex-col items-center justify-center p-4 shadow-lg rounded-2xl w-2/5 border-2 border-blue-600">
             <div class="username text-gray-800 text-2xl font-semi-italic mt-2">
-                <p class="italic" id="username"></p>
+                <p class="italic" id="username">
+
+                </p>
             </div>
             <div class="profile mx-auto rounded-full py-2 w-4/5 rounded-2xl">
                 <img id="profile-image" src="https://bronk.club/uploads/posts/2023-02/1677475753_bronk-club-p-milie-pikchi-otkritki-pinterest-15.jpg" alt="profile">
@@ -24,9 +26,12 @@
         </div>
     </div>
     <div class=" absolute bottom-0 right-0 h-32 w-32 ...">
-        <button class="bg-blue-500 text-white w-full p-2 rounded-lg hover:bg-blue-600 font-semibold" id="exit_btn">Exit</button>
-        <div class="py-3">
-           <button class="bg-blue-500 text-white w-full p-2 rounded-lg hover:bg-blue-600 font-semibold" id="del_profile_btn">Del profile</button>
+        <button class="bg-blue-500 text-white w-full p-1 rounded-lg hover:bg-blue-600 font-semibold" id="edit_btn">Edit</button>
+        <div class="py-2">
+        <button class="bg-blue-500 text-white w-full p-1 rounded-lg hover:bg-blue-600 font-semibold" id="exit_btn">Exit</button>
+        </div>
+        <div class="py-1">
+           <button class="bg-blue-500 text-white w-full p-1 rounded-lg hover:bg-blue-600 font-semibold" id="del_profile_btn">Del profile</button>
         </div>
     </div>
     <script type="module" src="{% static 'JS/profile.js' %}"></script>

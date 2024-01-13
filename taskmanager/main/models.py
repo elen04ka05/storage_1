@@ -26,6 +26,7 @@ class Sign(models.Model):
         verbose_name_plural = 'Данные пользователя'
 
 class Snippet(models.Model):
+    username = models.CharField('Пользователь (хуесос)', max_length=50)
     header = models.CharField('Название проекта', max_length=50)
     code_container = models.CharField('Поле ввода', max_length=50)
     tag_container = models.CharField('Тэги проекта', max_length=50)

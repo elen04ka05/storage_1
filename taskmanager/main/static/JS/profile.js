@@ -27,9 +27,29 @@ const sign_up_page_btn = document.getElementById('exit_btn');
 sign_up_page_btn.addEventListener('click', () => {
     window.location.href = 'sign_in.html';
 });
+const usernameElement = document.getElementById('username');
 
-const sign_up_page_btn = document.getElementById('snippets_btn');
+const editBtn = document.getElementById('edit_btn');
+let isEditing = false;
 
-sign_up_page_btn.addEventListener('click', () => {
-    window.location.href = 'home_page.html';
+editBtn.addEventListener('click', () => {
+    if (!isEditing) {
+        usernameElement.setAttribute('contenteditable', true);
+        usernameElement.focus();
+        editBtn.innerText = 'Save';
+        isEditing = true;
+    } else {
+        usernameElement.removeAttribute('contenteditable');
+        editBtn.innerText = 'Edit';
+        isEditing = false;
+    }
+});
+
+usernameElement.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+        usernameElement.blur();
+        if (isEditing) {
+            editBtn.dispatchEvent(new Event('click'));
+        }
+    }
 });

@@ -96,7 +96,7 @@ exampleCards = [
     date: '26 November, 2023',
   },
   {
-    code: 'export const validateEmail = email => {\nconst regExp = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/i\nreturn regExp.test(email)\n}',
+  code: 'export const validateEmail = email => {\nconst regExp = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/i\nreturn regExp.test(email)\n}',
     title: 'Form validation',
     date: '26 November, 2023',
   },
@@ -177,3 +177,60 @@ exampleCards.forEach(card => {
   const cardElement = createCardElement(card.code, card.title, card.date)
   cardsContainer.append(cardElement)
 })
+
+const sign_up_page_btn = document.getElementById('profile_btn');
+
+sign_up_page_btn.addEventListener('click', () => {
+    window.location.href = 'profile.html';
+});
+
+const create = document.getElementById('create_snippet');
+
+create.addEventListener('click', () => {
+    window.location.href = 'create.html';
+});
+document.addEventListener("DOMContentLoaded", function() {
+  const itemsFromDatabase = ['1', '2', '3'];
+  const itemList = document.getElementById('itemList');
+  itemsFromDatabase.forEach(function(item) {
+    const button = document.createElement('button');
+    button.textContent = item;
+    button.classList.add('btn', 'btn-primary', 'mb-2', 'd-block');
+    button.addEventListener('click', function() {
+      // Действие при клике на кнопку
+      console.log('Clicked on: ' + item);
+    });
+    itemList.appendChild(button);
+  });
+
+document.addEventListener("DOMContentLoaded", function() {
+  document.getElementById('tags').addEventListener('click', function() {
+    var myModal = new bootstrap.Modal(document.getElementById('itemModal'), {
+      keyboard: false
+    });
+    myModal.show();
+  });
+
+    $('#itemModal').modal('show');
+  });
+
+  document.getElementById('addItemForm').addEventListener('submit', function(event) {
+  event.preventDefault();
+  const newItem = document.getElementById('newItem').value;
+  const itemList = document.getElementById('itemList');
+
+  const button = document.createElement('button');
+  button.textContent = newItem;
+  button.classList.add('btn', 'btn-primary', 'd-block', 'mb-2');
+
+  button.addEventListener('click', function() {
+    // Действие при клике на кнопку
+    console.log('Clicked on: ' + newItem);
+  });
+
+  itemList.appendChild(button);
+  document.getElementById('newItem').value = '';
+});
+
+
+});
