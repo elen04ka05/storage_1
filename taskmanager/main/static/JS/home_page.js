@@ -145,6 +145,9 @@ const createTagElement = name => {
 const createCardElement = (code, title, date) => {
   const card = document.createElement('div')
   card.className = 'border border-slate-200 w-60 h-80 cursor-pointer transition hover:shadow-lg shadow-slate-50 rounded-md'
+  card.addEventListener('click', () => {
+    window.location.href = '/snippet.html'
+  })
 
   const p = document.createElement('p')
   p.className = 'p-4 border-b border-slate-200 h-56 whitespace-pre overflow-hidden text-ellipsis'
