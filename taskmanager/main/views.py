@@ -77,12 +77,6 @@ def home_page(request):
 
 
 def profile(request):
-    # k = 1
-    # if sign_in(1):
-        # username = sign_in(1).order_by('username')
-    # if sign_in_email(1):
-        # username = sign_in_email(1).order_by('username')
-    # print(username)
     id = Input.objects.latest('id')
     print(id)
 
