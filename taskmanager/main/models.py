@@ -29,6 +29,7 @@ class Sign(models.Model):
 
 
 class Enter(models.Model):
+    objects = None
     username = models.CharField('Имя пользователя', max_length=50)
 
     def __str__(self):

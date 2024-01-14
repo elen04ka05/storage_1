@@ -9,47 +9,55 @@ function setUsernameFromURL() {
         console.error('Element with id "username" not found');
     }
 }
-const changePicButton = document.getElementById('change_pic_btn');
-const profileImage = document.getElementById('profile-image');
 
-changePicButton.addEventListener('click', () => {
-    const imageUrl = prompt('Please enter the URL of the new profile picture:');
+document.addEventListener('DOMContentLoaded', function() {
+    setUsernameFromURL();
+    const usernameElement = document.getElementById('username');
+    const usernameFromData = usernameElement.dataset.username;
 
-    if (imageUrl) {
-        profileImage.src = imageUrl;
+    if (usernameElement.innerText.trim() === "") {
+        usernameElement.innerText = (usernameFromData !== '') ? usernameFromData : "ZAEBALAS";
     }
-});
 
-document.addEventListener('DOMContentLoaded', setUsernameFromURL);
+    const changePicButton = document.getElementById('change_pic_btn');
+    const profileImage = document.getElementById('profile-image');
 
-const sign_up_page_btn = document.getElementById('exit_btn');
+    changePicButton.addEventListener('click', () => {
+        const imageUrl = prompt('Please enter the URL of the new profile picture:');
 
-sign_up_page_btn.addEventListener('click', () => {
-    window.location.href = 'sign_in.html';
-});
-const usernameElement = document.getElementById('username');
-
-const editBtn = document.getElementById('edit_btn');
-let isEditing = false;
-
-editBtn.addEventListener('click', () => {
-    if (!isEditing) {
-        usernameElement.setAttribute('contenteditable', true);
-        usernameElement.focus();
-        editBtn.innerText = 'Save';
-        isEditing = true;
-    } else {
-        usernameElement.removeAttribute('contenteditable');
-        editBtn.innerText = 'Edit';
-        isEditing = false;
-    }
-});
-
-usernameElement.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter') {
-        usernameElement.blur();
-        if (isEditing) {
-            editBtn.dispatchEvent(new Event('click'));
+        if (imageUrl) {
+            profileImage.src = imageUrl;
         }
-    }
+    });
+
+    const sign_up_page_btn = document.getElementById('exit_btn');
+
+    sign_up_page_btn.addEventListener('click', () => {
+        window.location.href = 'sign_in.html';
+    });
+
+    const editBtn = document.getElementById('edit_btn');
+    let isEditing = false;
+
+    editBtn.addEventListener('click', () => {
+        if (!isEditing) {
+            usernameElement.setAttribute('contenteditable', true);
+            usernameElement.focus();
+            editBtn.innerText = 'Save';
+            isEditing = true;
+        } else {
+            usernameElement.removeAttribute('contenteditable');
+            editBtn.innerText = 'Edit';
+            isEditing = false;
+        }
+    });
+
+    usernameElement.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+            usernameElement.blur();
+            if (isEditing) {
+                editBtn.dispatchEvent(new Event('click'));
+            }
+        }
+    });
 });

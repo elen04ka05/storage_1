@@ -83,7 +83,11 @@ def home_page(request):
 
 
 def profile(request):
-    username = Enter.objects.latest('id')
+    id = Enter.objects.latest('id')
+    if id is None:
+        username = "ZAEBALAS"
+    else:
+        username = id.username
     print(username)
 
     return render(request, 'main/profile.html', {'username': username})
