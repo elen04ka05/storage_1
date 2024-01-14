@@ -77,6 +77,7 @@ def home_page(request):
 
 
 def profile(request):
+
     id = Input.objects.latest('id')
     print(id)
 
