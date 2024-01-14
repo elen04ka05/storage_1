@@ -1,6 +1,10 @@
 from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
 
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+import json
+
 from .models import Task, Sign, Enter
 from .forms import EmailForm, Sign_in_Form, Sign_in_Email_Form, CreateForm
 
@@ -88,7 +92,6 @@ def profile(request):
         username = "ZAEBALAS"
     else:
         username = id.username
-    print(username)
 
     return render(request, 'main/profile.html', {'username': username})
 
@@ -108,3 +111,24 @@ def create(request):
         'error': error
     }
     return render(request, 'main/create.html', context)
+
+
+@csrf_exempt
+def update_username(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        new_username = data.get('new_username')
+        if new_username:
+            try:
+                user_input = Enter.objects.last()
+                user = Sign.objects.filter(username=user_input.username)
+                print(user)
+                user_input.username = new_username
+                user_input.save()
+                user.username = new_username
+                print(user.username)
+                user.save()
+                return JsonResponse({'success': True})
+            except Exception as e:
+                return JsonResponse({'success': False, 'error': str(e)})
+    return JsonResponse({'success': False, 'error': 'Invalid request'})

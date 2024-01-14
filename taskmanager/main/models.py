@@ -16,7 +16,7 @@ class Task(models.Model):
 
 class Sign(models.Model):
     username = models.CharField('Имя пользователя', max_length=50)
-    email = models.CharField('Почта', max_length=50)
+    email = models.EmailField('Почта', max_length=50)
     pass_1 = models.CharField('Описание', max_length=50)
     pass_2 = models.CharField('Описание', max_length=50)
 

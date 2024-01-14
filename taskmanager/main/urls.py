@@ -11,5 +11,6 @@ urlpatterns = [
     path('profile.html', views.profile),
     path('sign_in_email.html', views.sign_in_email),
     path('snippet.html', views.snippet),
+    path('update_username.html', views.update_username),
     path('create.html', views.create)
 ]
