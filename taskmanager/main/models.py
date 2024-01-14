@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class Task(models.Model):
     title = models.CharField('Название', max_length=50)
     task = models.TextField('Описание')
@@ -25,17 +26,11 @@ class Sign(models.Model):
         verbose_name = 'Данные пользователя'
         verbose_name_plural = 'Данные пользователя'
 
-class Snippet(models.Model):
-    header = models.CharField('Название проекта', max_length=50)
-    code_container = models.CharField('Поле ввода', max_length=50)
-    tag_container = models.CharField('Тэги проекта', max_length=50)
+
+
+
+class Enter(models.Model):
+    username = models.CharField('Имя пользователя', max_length=50)
 
     def __str__(self):
-        return self.header
-
-
-class Input(models.Model):
-    username = models.CharField('Имя пользователя', max_length=50, default='a')
-
-    def str(self):
         return self.username

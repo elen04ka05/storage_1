@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
 
-from .models import Task, Sign, Input
-from .forms import EmailForm, Sign_in_Form, Snippet_Form, Sign_in_Email_Form
+from .models import Task, Sign, Enter
+from .forms import EmailForm, Sign_in_Form, Sign_in_Email_Form
 
 
 def welcome(request):
@@ -16,7 +16,7 @@ def sign_in(request):
         if form.is_valid():
             user = Sign.objects.filter(username=form.cleaned_data['username'])
             if user:
-                inp = Input(1, user.values_list('username', flat=True).last())
+                inp = Enter(1, user.values_list('username', flat=True).last())
                 inp.save()
                 return redirect('home_page.html')
             else:
@@ -34,10 +34,6 @@ def sign_in(request):
 
 
 def snippet(request):
-    if request.method == 'POST':
-        form = Snippet_Form(request.post)
-        if form.is_valid():
-            form.save()
     return render(request, 'main/snippet.html')
 
 
@@ -68,6 +64,8 @@ def sign_in_email(request):
             email = Sign.objects.filter(email=form.cleaned_data['email'])
             # username = Sign.objects.filter(email=form.cleaned_data['email'])
             if email:
+                inp = Enter(1, email.values_list('username', flat=True).last())
+                inp.save()
                 return redirect('home_page.html')
             else:
                 error = 'Пользователя нет'
@@ -91,7 +89,7 @@ def profile(request):
     # if sign_in_email(1):
         # username = sign_in_email(1).order_by('username')
     # print(username)
-    id = Input.objects.latest('id')
-    print(id)
+    username = Enter.objects.latest('id')
+    print(username)
 
-    return render(request, 'main/profile.html', {'username': id})
+    return render(request, 'main/profile.html', {'username': username})

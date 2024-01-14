@@ -1,7 +1,6 @@
 from django.contrib import admin
-from .models import Task, Sign, Input
-
+from .models import Task, Sign, Enter
 
 admin.site.register(Task)
 admin.site.register(Sign)
-admin.site.register(Input)
+admin.site.register(Enter)
