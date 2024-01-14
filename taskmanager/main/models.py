@@ -1,6 +1,5 @@
 from django.db import models
 
-
 class Task(models.Model):
     title = models.CharField('Название', max_length=50)
     task = models.TextField('Описание')
@@ -18,7 +17,6 @@ class Sign(models.Model):
     email = models.CharField('Почта', max_length=50)
     pass_1 = models.CharField('Описание', max_length=50)
     pass_2 = models.CharField('Описание', max_length=50)
-    pic = models.CharField('Ссылка на фото', max_length=50,default='https://bronk.club/uploads/posts/2023-02/1677475753_bronk-club-p-milie-pikchi-otkritki-pinterest-15.jpg')
 
     def __str__(self):
         return self.username
@@ -26,7 +24,6 @@ class Sign(models.Model):
     class Meta:
         verbose_name = 'Данные пользователя'
         verbose_name_plural = 'Данные пользователя'
-
 
 class Snippet(models.Model):
     username = models.CharField('Пользователь (хуесос)', max_length=50)
@@ -36,10 +33,3 @@ class Snippet(models.Model):
 
     def __str__(self):
         return self.header
-
-
-class Input(models.Model):
-    username = models.CharField('Имя пользователя', max_length=50, default='a')
-
-    def __str__(self):
-        return self.username

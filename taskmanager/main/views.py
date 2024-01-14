@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
 
-from .models import Task, Sign, Snippet
-from .forms import EmailForm, Sign_in_Form, Snippet_Form
+from .models import Sign, Create
+from .forms import EmailForm, Sign_in_Form, CreateForm
 
 
 def welcome(request):
@@ -83,4 +83,17 @@ def history(request):
 
 
 def create(request):
-    return render(request, 'main/create.html')
+    error = ''
+    if request.method == 'POST':
+        form = CreateForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('snippet.html')
+        else:
+            error = 'Ошибка ввода'
+    form = CreateForm()
+    context = {
+        'form': form,
+        'error': error
+    }
+    return render(request, 'main/create.html', context)
