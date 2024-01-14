@@ -64,3 +64,26 @@ class CreateForm(ModelForm):
                 'placeholder': 'Select language'
             })
         }
+
+class Profil_Edit_Form(ModelForm):
+    model = Sign
+    fields = ["username"]
+    widgets = {"username": TextInput(attrs={
+            'placeholder': 'Change your username'
+        })}
+
+
+class Sign_in_Email_Form(ModelForm):
+    class Meta:
+        model = Sign
+        fields = ["email", "pass_1"]
+        widgets = {
+            "email": TextInput(attrs={
+                'class': 'border w-full text-base px-2 py-1 focus:outline-none focus:ring-0 focus:border-gray-600',
+                'placeholder': 'Enter email'
+            }),
+            "pass_1": TextInput(attrs={
+                'class': 'border w-full text-base px-2 py-1 focus:outline-none focus:ring-0 focus:border-gray-600',
+                'placeholder': 'Enter password'
+            }),
+        }

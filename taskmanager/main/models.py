@@ -40,3 +40,10 @@ class Create(models.Model):
     class Meta:
         verbose_name = 'Сниппет'
         verbose_name_plural = 'Сниппеты'
+
+
+class Input(models.Model):
+    username = models.CharField('Имя пользователя', max_length=50, default='a')
+
+    def str(self):
+        return self.username
