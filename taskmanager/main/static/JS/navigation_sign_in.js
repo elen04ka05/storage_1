@@ -9,6 +9,12 @@ sign_in_with_email_btn.addEventListener('click', () => {
     window.location.href = 'sign_in_email.html';
 });
 
+const sign_in_with_username_btn = document.getElementById('sign_in_with_username_btn');
+
+sign_in_with_username_btn.addEventListener('click', () => {
+    window.location.href = 'sign_in.html';
+});
+
 const sign_in_email_btn = document.getElementById('sign_in_email_btn');
 
 sign_in_email_btn.addEventListener('click', () => {
