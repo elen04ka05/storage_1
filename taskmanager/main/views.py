@@ -74,7 +74,6 @@ def sign_in_email(request):
 
 
 def home_page(request):
-   # tasks = Task.objects.all()
     return render(request, 'main/home_page.html')
 
 
