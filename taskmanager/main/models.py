@@ -1,16 +1,5 @@
 from django.db import models
-
-class Task(models.Model):
-    title = models.CharField('Название', max_length=50)
-    task = models.TextField('Описание')
-
-    def __str__(self):
-        return self.title
-
-    class Meta:
-        verbose_name = 'задача'
-        verbose_name_plural = 'задачи'
-
+from django.utils.timezone import localdate
 
 class Sign(models.Model):
     username = models.CharField('Имя пользователя', max_length=50)
@@ -25,11 +14,29 @@ class Sign(models.Model):
         verbose_name = 'Данные пользователя'
         verbose_name_plural = 'Данные пользователя'
 
-class Snippet(models.Model):
-    username = models.CharField('Пользователь (хуесос)', max_length=50)
-    header = models.CharField('Название проекта', max_length=50)
-    code_container = models.CharField('Поле ввода', max_length=50)
-    tag_container = models.CharField('Тэги проекта', max_length=50)
+
+class Create(models.Model):
+    LANG_CH = (
+        ('d', '--Select language--'),
+        ('JS', 'JavaScript'),
+        ('J', 'Java'),
+        ('CP', 'C++'),
+        ('CSh', 'C#'),
+        ('C', 'C'),
+        ('P', 'Python'),
+        ('K', 'Kotlin'),
+        ('H', 'HTML'),
+        ('CSS', 'CSS'),
+    )
+    #username = models.CharField('Пользователь', max_length=50)
+    filename = models.CharField('Название файла', max_length=50)
+    code = models.TextField('Код')
+    lang = models.CharField('Язык', max_length=20, choices=LANG_CH, default='--Select language--')
+    date = models.DateField('Дата создания', default='1998-01-01')
 
     def __str__(self):
-        return self.header
+        return self.filename
+
+    class Meta:
+        verbose_name = 'Сниппет'
+        verbose_name_plural = 'Сниппеты'

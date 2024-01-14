@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
 
-from .models import Sign, Create
-from .forms import EmailForm, Sign_in_Form, CreateForm
+from .models import Sign, Create, Input
+from .forms import EmailForm, Sign_in_Form, CreateForm, Sign_in_Email_Form
 
 
 def welcome(request):
@@ -16,12 +16,17 @@ def sign_in(request):
         if form.is_valid():
             user = Sign.objects.filter(username=form.cleaned_data['username'])
             if user:
+                inp = Input(1, user.values_list('username', flat=True).last())
+                inp.save()
                 return redirect('home_page.html')
             else:
                 error = 'Пользователя нет'
         else:
             error = 'Введенные данные неверны'
     form = Sign_in_Form()
+    # user_id = models.ForeignKey(MyUUIDModel, unique=True)
+    # user_id = MyUUIDModel(models.Model)
+    # print(user_id)
     context = {
         'form': form
     }
@@ -50,16 +55,17 @@ def sign_up(request):
 
 def sign_in_email(request):
     if request.method == 'POST':
-        form = Sign_in_Form(request.POST)
+        form = Sign_in_Email_Form(request.POST)
         if form.is_valid():
             email = Sign.objects.filter(email=form.cleaned_data['email'])
+            # username = Sign.objects.filter(email=form.cleaned_data['email'])
             if email:
                 return redirect('home_page.html')
             else:
                 error = 'Пользователя нет'
         else:
             error = 'Введенные данные неверны'
-    form = Sign_in_Form()
+    form = Sign_in_Email_Form()
     context = {
         'form': form
     }
@@ -71,7 +77,16 @@ def home_page(request):
 
 
 def profile(request):
-    return render(request, 'main/profile.html')
+    # k = 1
+    # if sign_in(1):
+        # username = sign_in(1).order_by('username')
+    # if sign_in_email(1):
+        # username = sign_in_email(1).order_by('username')
+    # print(username)
+    id = Input.objects.latest('id')
+    print(id)
+
+    return render(request, 'main/profile.html', {'username': id})
 
 
 def snippet(request):
