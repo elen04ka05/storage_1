@@ -10,5 +10,6 @@ urlpatterns = [
     path('home_page.html', views.home_page),
     path('profile.html', views.profile),
     path('sign_in_email.html', views.sign_in_email),
-    path('snippet.html', views.snippet)
+    path('snippet.html', views.snippet),
+    path('create.html', views.create)
 ]

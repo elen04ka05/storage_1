@@ -1,5 +1,5 @@
-from .models import Sign
-from django.forms import ModelForm, TextInput
+from .models import Sign, Create
+from django.forms import ModelForm, TextInput, Textarea, DateInput, Select
 
 
 class EmailForm(ModelForm):
@@ -64,3 +64,27 @@ class Profil_Edit_Form(ModelForm):
     widgets = {"username": TextInput(attrs={
             'placeholder': 'Change your username'
         })}
+
+
+class CreateForm(ModelForm):
+    class Meta:
+        model = Create
+        fields = ["filename", "code", "date", "lang"]
+        widgets = {
+            "filename": TextInput(attrs={
+                'class': 'p-1 border w-1/5 text-base focus:outline-none focus:ring-0 focus:border-gray-600 border-rounded-lg',
+                'placeholder': 'Filename'
+            }),
+            "code": Textarea(attrs={
+                'class': 'w-full px-0 text-sm text-gray-900 bg-white border-2 border-rounded-lg border-blue-500 dark:bg-gray-800 focus:ring-3 dark:text-white dark:placeholder-gray-400',
+                'placeholder': 'Enter code'
+            }),
+            "date": DateInput(attrs={
+                'class': 'p-2',
+                'placeholder': 'Creation date'
+            }),
+            "lang": Select(attrs={
+                'class': 'p-2',
+                'placeholder': 'Select language'
+            })
+        }

@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
 
 from .models import Task, Sign, Enter
-from .forms import EmailForm, Sign_in_Form, Sign_in_Email_Form
+from .forms import EmailForm, Sign_in_Form, Sign_in_Email_Form, CreateForm
 
 
 def welcome(request):
@@ -83,13 +83,24 @@ def home_page(request):
 
 
 def profile(request):
-    # k = 1
-    # if sign_in(1):
-        # username = sign_in(1).order_by('username')
-    # if sign_in_email(1):
-        # username = sign_in_email(1).order_by('username')
-    # print(username)
     username = Enter.objects.latest('id')
     print(username)
 
     return render(request, 'main/profile.html', {'username': username})
+
+
+def create(request):
+    error = ''
+    if request.method == 'POST':
+        form = CreateForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('snippet.html')
+        else:
+            error = 'Ошибка ввода'
+    form = CreateForm()
+    context = {
+        'form': form,
+        'error': error
+    }
+    return render(request, 'main/create.html', context)

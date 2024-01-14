@@ -1,4 +1,5 @@
 from django.db import models
+import datetime
 
 
 class Task(models.Model):
@@ -27,10 +28,35 @@ class Sign(models.Model):
         verbose_name_plural = 'Данные пользователя'
 
 
-
-
 class Enter(models.Model):
     username = models.CharField('Имя пользователя', max_length=50)
 
     def __str__(self):
         return self.username
+
+
+class Create(models.Model):
+    LANG_CH = (
+        ('d', 'Select language'),
+        ('JS', 'JavaScript'),
+        ('J', 'Java'),
+        ('CP', 'C++'),
+        ('CSh', 'C#'),
+        ('C', 'C'),
+        ('P', 'Python'),
+        ('K', 'Kotlin'),
+        ('H', 'HTML'),
+        ('CSS', 'CSS'),
+    )
+    #username = models.CharField('Пользователь', max_length=50)
+    filename = models.CharField('Название файла', max_length=50)
+    code = models.TextField('Код')
+    lang = models.CharField('Язык', max_length=20, choices=LANG_CH, default='Select language')
+    date = models.DateField('Дата создания', default=datetime.datetime.now().strftime("%d.%m.%y"))
+
+    def __str__(self):
+        return self.filename
+
+    class Meta:
+        verbose_name = 'Сниппет'
+        verbose_name_plural = 'Сниппеты'
