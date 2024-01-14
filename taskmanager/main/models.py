@@ -32,3 +32,10 @@ class Snippet(models.Model):
 
     def __str__(self):
         return self.header
+
+
+class Input(models.Model):
+    username = models.CharField('Имя пользователя', max_length=50, default='a')
+
+    def str(self):
+        return self.username
