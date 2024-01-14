@@ -155,11 +155,12 @@ const createCardElement = (code, title, date) => {
   card.append(p)
 
   const footer = document.createElement('div')
-  footer.className = 'p-4'
+  footer.className = 'px-2 py-1'
   card.append(footer)
 
   const header = document.createElement('h2')
   header.className = 'font-bold overflow-hidden text-ellipsis whitespace-nowrap'
+  header.style.fontSize = '16px'
   header.textContent = title
   footer.append(header)
 
